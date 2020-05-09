@@ -1,0 +1,24 @@
+body {
+  width: 80%;
+  margin: 2em auto 0 auto;
+}
+
+.images {
+  column-count: 3;
+}
+
+img {
+  width: 100%;
+}
+
+@media (max-width: 1200px) {
+  .images {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 800px) {
+  .images {
+    column-count: 1;
+  }
+}

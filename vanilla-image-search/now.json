@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "*",
+      "use": "@now/static"
+    }
+  ],
+  "alias": [
+    "vanilla-image-search"
+  ]
+}
