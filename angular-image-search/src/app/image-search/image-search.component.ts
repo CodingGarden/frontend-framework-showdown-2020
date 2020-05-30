@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ImageApiService, APIResult, ImageResult } from '../image-api.service';
+import { NgForm } from '@angular/forms';
+import { ImageApiService } from '../services/image-api.service';
+import { Image } from '../models/image.model';
 
 @Component({
   selector: 'app-image-search',
@@ -7,21 +9,21 @@ import { ImageApiService, APIResult, ImageResult } from '../image-api.service';
   styleUrls: ['./image-search.component.css']
 })
 export class ImageSearchComponent implements OnInit {
-  searchTerm = '';
   loading = false;
-  images: string[] = [];
+  images: Image[];
 
   constructor(private imageAPIService: ImageApiService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  formSubmitted() {
-    this.images = [];
+  formSubmitted(searchForm: NgForm) {
     this.loading = true;
-    this.imageAPIService.getImages(this.searchTerm)
-      .subscribe((images: string[]) => {
+    const searchTerm = searchForm.value.searchTerm;
+
+    this.imageAPIService.getImages(searchTerm)
+      .subscribe((images: Image[]) => {
         this.images = images;
-        this.loading = false;   
+        this.loading = false;
       });
   }
 
