@@ -6,5 +6,5 @@
 </form>
 <img *ngIf="loading" id="loadingImage" src="https://i.imgur.com/LVHmLnb.gif">
 <section class="images">
-  <img *ngFor="let image of images;" [src]="image" >
+  <img *ngFor="let image of images$ | async;" [src]="image" >
 </section>
