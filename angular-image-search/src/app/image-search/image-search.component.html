@@ -1,10 +1,16 @@
 <h1>Angular Image Search</h1>
-<form (ngSubmit)="formSubmitted()">
+<form #f="ngForm" (ngSubmit)="formSubmitted(f)">
   <label for="searchTerm">Search Term</label>
-  <input [(ngModel)]="searchTerm" class="u-full-width" type="text" id="searchTerm" name="searchTerm">
+  <input
+    class="u-full-width"
+    type="text"
+    id="searchTerm"
+    name="searchTerm"
+    ngModel
+  />
   <button type="submit">Search</button>
 </form>
-<img *ngIf="loading" id="loadingImage" src="https://i.imgur.com/LVHmLnb.gif">
+<img *ngIf="loading" id="loadingImage" src="https://i.imgur.com/LVHmLnb.gif" />
 <section class="images">
-  <img *ngFor="let image of images;" [src]="image" >
+  <img *ngFor="let image of images" [src]="image.image" />
 </section>
